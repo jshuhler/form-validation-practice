@@ -6,6 +6,34 @@
     <title>Form Validation</title>
 </head>
 <body>
-    
+    <form novalidate>
+        <p>
+            <label for="email">Email (must be @fakenet.org domain): 
+                <input type="text" id="email" name="email" required>
+            </label>
+            
+            <label for="country">Country: 
+                <select name="country" id="country" required>
+                    <option value="default">Choose a Country:</option>
+                    <option value="canada">Canada</option>
+                    <option value="usa">United States</option>
+                    <option value=" mexico">Mexico</option>
+                </select>
+            </label>
+            
+            <label for="postal-code">Postal code: 
+                <input type="text" id="postal-code" name="postal-code" required>
+            </label>
+
+            <label for="password">Password: 
+                <input type="text" name="password" id="password" required>
+            </label>
+
+            <label for="password-confirm">Confirm your password:
+                <input type="text" name="password-confirm" id="password-confirm" required>
+            </label>
+        </p>
+        <button>Submit</button>
+    </form>
 </body>
 </html>
