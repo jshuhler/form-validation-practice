@@ -7,28 +7,36 @@
 </head>
 <body>
     <form novalidate>
-        <p>
-            <label for="email">Email (must be @fakenet.org domain): 
-                <input type="text" id="email" name="email" required>
+        <p class="email">
+            <label for="email">Email (must be @fakenet.org domain):
+                <input type="text" id="email" name="email" required minlength="13">
             </label>
+        </p>
             
-            <label for="country">Country: 
+        <p class="country">
+            <label for="country">Country:
                 <select name="country" id="country" required>
                     <option value="default">Choose a Country:</option>
                     <option value="canada">Canada</option>
+                    <option value="mexico">Mexico</option>
                     <option value="usa">United States</option>
-                    <option value=" mexico">Mexico</option>
                 </select>
             </label>
-            
-            <label for="postal-code">Postal code: 
+        </p>
+        
+        <p class="postal-code">
+            <label for="postal-code">Postal code:
                 <input type="text" id="postal-code" name="postal-code" required>
             </label>
+        </p>
 
-            <label for="password">Password: 
+        <p class="password">
+            <label for="password">Password:
                 <input type="text" name="password" id="password" required>
             </label>
+        </p>
 
+        <p class="password-confirm">
             <label for="password-confirm">Confirm your password:
                 <input type="text" name="password-confirm" id="password-confirm" required>
             </label>
