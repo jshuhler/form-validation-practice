@@ -8,8 +8,28 @@
 
 form {
     max-width: 350px;
+    margin: auto;
+    padding: 25px;
+}
+
+input,
+select {
+    width: 350px;
+    margin: 5px 0 15px 0;
+    padding: 5px 0;
 }
 
 p * {
     display: block;
+}
+
+.error {
+    width: 100%;
+    font-size: 80%;
+    color: whitesmoke;
+    background-color: #990000;
+}
+
+.error.active {
+    padding: 0.3em;
 }
