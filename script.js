@@ -17,8 +17,18 @@ email.addEventListener("input", (e) => {
 
 function showEmailError() {
     if (email.validity.valueMissing) {
-        emailError.textContent = "You must enter an email address to submit.";
+        emailError.textContent = "You must enter an email address.";
     } else if (email.validity.typeMismatch) {
-        emailError.textContent = "You've entered something other than an email address."
+        emailError.textContent = "You must enter a valid email address."
+    } else if (email.validity.tooShort) {
+        emailError.textContent = `Email address must be at least ${email.minLength} characters total.`
     }
 };
+
+// COUNTRY AND POSTAL CODE VALIDATION
+const countrySelect = document.getElementById("country");
+const postalCode = document.getElementById("postal-code");
+
+function checkPostalCode {
+    
+}
