@@ -38,13 +38,15 @@
 
         <p class="password">
             <label for="password">Password:
-                <input type="text" name="password" id="password" required>
+                <input type="password" name="password" id="password" required>
+                <span id="password-error" class="error" aria-live="polite"></span>
             </label>
         </p>
 
         <p class="password-confirm">
             <label for="password-confirm">Confirm your password:
-                <input type="text" name="password-confirm" id="password-confirm" required>
+                <input type="password" name="password-confirm" id="password-confirm" required>
+                <span id="password-confirm-error" class="error" aria-live="polite"></span>
             </label>
         </p>
         <button class="submit-button">Submit</button>
