@@ -27,10 +27,38 @@ function showEmailError() {
 // COUNTRY AND POSTAL CODE VALIDATION
 const countrySelect = document.getElementById("country");
 const postalCode = document.getElementById("postal-code");
+const postalError = document.getElementById("postal-error");
 
+function validatePostalCode() {
+    const constraints = {
+        ca: [
+            "[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$",
+            "Canadian Postal Codes must have exactly 6 digits and follow the A#A A#A format."
+        ],
+        mx: [
+            "^\d{5}$",
+            "Mexican Postal Codes must have exactly 5 digits."
+        ],
+        us: [
+            "^\d{5}$",
+            "United States Postal Codes must have exactly 5 digits."
+        ],
+    };
 
+    const country = countrySelect.value;
 
-const country = countrySelect.value;
+    const constraint = new RegExp(constraints[country][0], "");
+    console.log(constraint);
+
+    if (constraint.test(postalCode.value)) {
+        postalCode.setCustomValidity("");
+    } else {
+        postalCode.setCustomValidity(constraints[country][1]);
+    }
+};
+
+countrySelect.addEventListener("change", validatePostalCode);
+postalCode.addEventListener("input", validatePostalCode);
 
 // PASSWORD VALIDATION
 const password = document.getElementById("password");
@@ -44,7 +72,7 @@ function checkPassword() {
     if (passwordRegex.test(password.value)) {
         passwordError.textContent = "";
     } else {
-        passwordError.textContent = "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and be a minimum 8 characters in length.";
+        passwordError.textContent = "Password must be a minimum of 8 characters and contain at least: 1 uppercase letter, 1 lowercase letter, and 1 number.";
     }
 };
 
