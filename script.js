@@ -101,4 +101,9 @@ function checkPasswordMatch () {
 // SUBMIT BUTTON
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+    if (!form.checkValidity()) {
+        alert("You're missing something, check you meet all of the field requirements.");
+    } else {
+        alert("High five!");
+    };
 });
