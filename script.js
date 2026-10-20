@@ -25,23 +25,29 @@ function showEmailError() {
 };
 
 // COUNTRY AND POSTAL CODE VALIDATION
+
+// this isn't working right now because I have `novalidate` on the form in the HTML. I can't figure out how to get the error to show, as the example on MDN was using the normal browser based notices for errors rather than a custom field like I have been using
 const countrySelect = document.getElementById("country");
 const postalCode = document.getElementById("postal-code");
 const postalError = document.getElementById("postal-error");
 
 function validatePostalCode() {
     const constraints = {
-        ca: [
-            "[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$",
-            "Canadian Postal Codes must have exactly 6 digits and follow the A#A A#A format."
+        ch: [
+            "^(CH-)?\\d{4}$",
+            "Swiss postal codes must have exactly 4 digits: e.g. CH-1950 or 1950",
         ],
-        mx: [
-            "^\d{5}$",
-            "Mexican Postal Codes must have exactly 5 digits."
+        fr: [
+            "^(F-)?\\d{5}$",
+            "French postal codes must have exactly 5 digits: e.g. F-75012 or 75012",
         ],
-        us: [
-            "^\d{5}$",
-            "United States Postal Codes must have exactly 5 digits."
+        de: [
+            "^(D-)?\\d{5}$",
+            "German postal codes must have exactly 5 digits: e.g. D-12345 or 12345",
+        ],
+        nl: [
+            "^(NL-)?\\d{4}\\s*([A-RT-Z][A-Z]|S[BCE-RT-Z])$",
+            "Dutch postal codes must have exactly 4 digits, followed by 2 letters except SA, SD and SS",
         ],
     };
 
@@ -55,6 +61,8 @@ function validatePostalCode() {
     } else {
         postalCode.setCustomValidity(constraints[country][1]);
     }
+
+    postalCode.reportValidity();
 };
 
 countrySelect.addEventListener("change", validatePostalCode);
@@ -89,3 +97,8 @@ function checkPasswordMatch () {
         passwordConfirmError.textContent = "Passwords must match exactly.";
     };
 };
+
+// SUBMIT BUTTON
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+});
